@@ -28,7 +28,7 @@ Requires Go.
 ```powershell
 go mod tidy
 New-Item -ItemType Directory -Force dist | Out-Null
-go build -trimpath -ldflags="-s -w" -o dist/agent-notify.exe agent-notify.go
+go build -trimpath -ldflags="-s -w" -o agent-notify.exe main.go
 ```
 
 ### Linux
@@ -36,7 +36,7 @@ go build -trimpath -ldflags="-s -w" -o dist/agent-notify.exe agent-notify.go
 ```bash
 go mod tidy
 mkdir -p dist
-go build -trimpath -ldflags="-s -w" -o dist/agent-notify agent-notify.go
+go build -trimpath -ldflags="-s -w" -o agent-notify main.go
 ```
 
 Put the resulting executable somewhere in `PATH`, then test it with:
