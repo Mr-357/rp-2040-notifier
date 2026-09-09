@@ -56,13 +56,14 @@ target_link_libraries(firmware-notifier
 target_include_directories(firmware-notifier PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
+# change the VID PID MANUFACTURER and PRODUCT for customization, don't forget to update the notifier-host-executable with the new VID/PID
 target_compile_definitions(
     firmware-notifier
     PRIVATE
     USBD_VID=0xCAFE
     USBD_PID=0x1337
-    "USBD_MANUFACTURER=\"Velja\""
-    "USBD_PRODUCT=\"Piksi Gift\""
+    "USBD_MANUFACTURER=\"Test\""
+    "USBD_PRODUCT=\"Notifier\""
     PICO_STDIO_USB_CONNECTION_WITHOUT_DTR=1
 )
 pico_add_extra_outputs(firmware-notifier)
