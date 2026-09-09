@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Pico",
+        "compilers": {
+            "C": "${env:USERPROFILE}/.pico-sdk/toolchain/15_2_Rel1/bin/arm-none-eabi-gcc.exe",
+            "CXX": "${env:USERPROFILE}/.pico-sdk/toolchain/15_2_Rel1/bin/arm-none-eabi-g++.exe"
+        },
+        "environmentVariables": {
+            "PICO_SDK_PATH": "${env:USERPROFILE}/.pico-sdk/sdk/2.3.1",
+            "PICO_TOOLCHAIN_PATH": "${env:USERPROFILE}/.pico-sdk/toolchain/15_2_Rel1",
+            "PATH": "${env:USERPROFILE}/.pico-sdk/toolchain/15_2_Rel1/bin;${env:USERPROFILE}/.pico-sdk/picotool/2.3.1/picotool;${env:USERPROFILE}/.pico-sdk/cmake/v4.3.4/bin;${env:USERPROFILE}/.pico-sdk/ninja/v1.13.2;${env:PATH}"
+        },
+        "cmakeSettings": {
+            "Python3_EXECUTABLE": "${command:raspberry-pi-pico.getPythonPath}"
+        }
+    }
+]
