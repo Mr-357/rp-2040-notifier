@@ -78,6 +78,22 @@ Add hooks to `~/.claude/settings.json`:
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          { "type": "command", "command": "agent-notify attention" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          { "type": "command", "command": "agent-notify ready" }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -95,6 +111,8 @@ Add hooks to `~/.claude/settings.json`:
   }
 }
 ```
+
+`AskUserQuestion` switches the notifier to `attention` while Claude waits for an answer, then back to `ready` after the answer is submitted.
 
 ## OpenCode
 
@@ -119,6 +137,8 @@ export const LLMNotifier = async ({ $ }) => {
       switch (event.type) {
         case "session.created":
         case "permission.replied":
+        case "question.replied":
+        case "question.rejected":
           await notify("ready")
           break
 
@@ -127,6 +147,7 @@ export const LLMNotifier = async ({ $ }) => {
           break
 
         case "permission.asked":
+        case "question.asked":
           await notify("attention")
           break
 
@@ -138,6 +159,8 @@ export const LLMNotifier = async ({ $ }) => {
   }
 }
 ```
+
+OpenCode question prompts switch the notifier to `attention` while waiting for input, then back to `ready` after the question is answered or dismissed.
 
 Restart OpenCode after adding the plugin.
 
