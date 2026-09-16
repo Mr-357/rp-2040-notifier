@@ -7,6 +7,8 @@ A small USB notifier for coding agents. The host executable auto-detects the RP2
 - `attention`
 - `error`
 
+GPIO pins 9,11,12,13 are used. Pin 9 controls the mosfet gate powering a small coil vibration motor. Pins 11,12,13 are connected to a CNT1 RGB module. 
+
 ## Repository layout
 
 ```text
