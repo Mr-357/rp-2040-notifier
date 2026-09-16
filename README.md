@@ -165,13 +165,3 @@ export const LLMNotifier = async ({ $ }) => {
 OpenCode question prompts switch the notifier to `attention` while waiting for input, then back to `ready` after the question is answered or dismissed.
 
 Restart OpenCode after adding the plugin.
-
-## Codex
-
-Add this to the user-level `~/.codex/config.toml`:
-
-```toml
-notify = ["agent-notify", "done"]
-```
-
-Codex appends its notification JSON payload as an additional argument; `agent-notify` ignores additional arguments, so the configured `done` action remains the command sent to the RP2040.
